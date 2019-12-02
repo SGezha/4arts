@@ -1,0 +1,50 @@
+<!doctype html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="/style.css">
+  <title>4ARTS</title>
+  <link id="icon" rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon">
+  <link href="https://use.fontawesome.com/releases/v5.10.1/css/all.css" rel="stylesheet">
+</head>
+
+<body style="overflow: hidden;">
+  <div class="transition-loader">
+      <div class="transition-loader-inner">
+        <label></label>
+        <label></label>
+        <label></label>
+        <label></label>
+        <label></label>
+        <label></label>
+      </div>
+    </div>
+  <div style="opacity: 0; transition: 1s;" class="masonry-wrapper">
+      <div class="select-box">
+          <div class="select-box__current" tabindex="1">
+          </div>
+          <ul class="select-box__list">
+          </ul>
+      </div>
+      <div class="masonry">
+          
+      </div>
+    </div>
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<!--   <script src="https://unpkg.com/imagesloaded@4/imagesloaded.pkgd.min.js"></script> -->
+  <script src="/script.js"></script>
+  <script>
+    axios.get(`https://nekos.life/api/v2/img/avatar`).then(i => {
+      document.getElementById("icon").href = i.data.url;
+    })
+    setInterval(() => {
+      axios.get(`https://nekos.life/api/v2/img/avatar`).then(i => {
+        document.getElementById("icon").href = i.data.url;
+      })
+    }, 3000)
+  </script>
+</body>
+
+</html>
